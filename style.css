@@ -1,0 +1,37 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body,
+html {
+  font-size: 16px;
+  text-align: center;
+}
+
+header {
+  margin-top: 50px;
+}
+.planner {
+  width: 1024px;
+  margin: auto;
+  margin-top: 100px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(auto, 150px);
+}
+
+.planner .row {
+  border: solid 2px teal;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.row > div {
+  border: solid 1px red;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
