@@ -12,43 +12,44 @@
         <h1>College Budget Planner</h1>
       </header>
       <div class="planner">
-        <div class="row">
+        <div class="row income">
           <div class="label">Income</div>
-          <div>Monthly</div>
-          <div>Quarter/Semester</div>
-          <div>Yearly</div>
+          <div class="label">Monthly</div>
+          <div class="label">Quarter/Semester</div>
+          <div class="label">Yearly</div>
         </div>
-        <div class="row">
+        <div class="row income">
           <div class="label">Work</div>
-          <input />
-          <input />
-          <input />
+          <input class="month" placeholder="Work monthly" />
+          <input class="term" placeholder="work term" />
+          <input class="year" placeholder="work year" />
         </div>
-        <div class="row">
+        <div class="row income">
           <div class="label">Scholarships/Grants</div>
-          <input />
-          <input />
-          <input />
+          <input class="month" placeholder="schol mont" />
+          <input class="term" placeholder="scol term $" />
+          <input class="year" placeholder="scol year $" />
         </div>
-        <div class="row">
+        <div class="row income">
           <div class="label">Financial Aid</div>
-          <input />
-          <input />
-          <input />
+          <input class="month" placeholder="fin month $" />
+          <input class="term" placeholder="fin term $" />
+          <input class="year" placeholder="fin year $" />
         </div>
-        <div class="row">
+        <div class="row income">
           <div class="label">Other</div>
-          <input />
-          <input />
-          <input />
+          <input class="month" placeholder="other month $" />
+          <input class="term" placeholder="other term $" />
+          <input class="year" placeholder="other year $" />
         </div>
-        <div class="row">
+        <div class="row incomeTotal">
           <div class="label">Total:</div>
-          <input />
-          <input />
-          <input />
+          <div class="month total"></div>
+          <div class="term total"></div>
+          <div class="year total"></div>
         </div>
       </div>
     </main>
+    <script src="budget-planner.js"></script>
   </body>
 </html>
