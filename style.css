@@ -23,15 +23,17 @@ header {
 }
 
 .planner .row {
-  border: solid 2px teal;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
 }
 
 .row > div {
-  border: solid 1px red;
   height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+div {
+  border: solid 0.2px teal;
 }
