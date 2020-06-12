@@ -27,6 +27,20 @@ addEachListener(monthFixedExpenseElements, monthFixedExpenseTotal);
 addEachListener(termFixedExpenseElements, termFixedExpenseTotal);
 addEachListener(yearFixedExpenseElements, yearFixedExpenseTotal);
 
+//variable expenses section
+const monthVarExpenseElements = document.getElementsByClassName('monthlyVE');
+const monthVarExpenseTotal = document.getElementById('monthVETotal');
+
+const termVarExpenseElements = document.getElementsByClassName('termVE');
+const termVarExpenseTotal = document.getElementById('termVETotal');
+
+const yearVarExpenseElements = document.getElementsByClassName('yearVE');
+const yearVarExpenseTotal = document.getElementById('yearVETotal');
+
+addEachListener(monthVarExpenseElements, monthVarExpenseTotal);
+addEachListener(termVarExpenseElements, termVarExpenseTotal);
+addEachListener(yearVarExpenseElements, yearVarExpenseTotal);
+
 function addEachListener(period, totalElement) {
   for (let income of period) {
     income.addEventListener('change', function () {
@@ -41,7 +55,6 @@ function calculateTotal(period, totalElement) {
   for (let income of period) {
     let incomeValue = Number(income.value);
     if (isNaN(incomeValue)) {
-      console.log('not a num');
       income.value = '';
       income.placeholder = 'Please enter a number';
       valid = false;
