@@ -10,6 +10,7 @@
     <main>
       <header>
         <h1>College Budget Planner</h1>
+        <p>How do I work?</p>
       </header>
       <div class="planner">
         <div class="row" id="periodLabels">
@@ -18,6 +19,7 @@
           <div class="label">Quarter/Semester</div>
           <div class="label">Yearly</div>
         </div>
+        <!--Income-->
         <div class="row income">
           <div class="label">Work</div>
           <input class="monthlyIncome" />
@@ -48,6 +50,7 @@
           <div id="termIncomeTotal"></div>
           <div id="yearIncomeTotal"></div>
         </div>
+        <!--fixed expenses-->
         <div class="row" id="periodLabels">
           <div class="label">Expenses (fixed)</div>
           <div class="label">Monthly</div>
@@ -95,6 +98,80 @@
           <div id="monthFETotal"></div>
           <div id="termFETotal"></div>
           <div id="yearFETotal"></div>
+        </div>
+
+        <!--Variable expenses-->
+        <div class="row" id="periodLabels">
+          <div class="label">Expenses (variable)</div>
+          <div class="label">Monthly</div>
+          <div class="label">Quarter/Semester</div>
+          <div class="label">Yearly</div>
+        </div>
+        <div class="row income">
+          <div class="label">Utilities</div>
+          <input class="monthlyVE" />
+          <input class="termVE" />
+          <input class="yearVE" />
+        </div>
+        <div class="row income">
+          <div class="label">Cell phone</div>
+          <input class="monthlyVE" />
+          <input class="termVE" />
+          <input class="yearVE" />
+        </div>
+        <div class="row income">
+          <div class="label">Cable/internet</div>
+          <input class="monthlyVE" />
+          <input class="termVE" />
+          <input class="yearVE" />
+        </div>
+        <div class="row income">
+          <div class="label">Transportation</div>
+          <input class="monthlyVE" />
+          <input class="termVE" />
+          <input class="yearVE" />
+        </div>
+        <div class="row income">
+          <div class="label">Medical/Dental</div>
+          <input class="monthlyVE" />
+          <input class="termVE" />
+          <input class="yearVE" />
+        </div>
+        <div class="row income">
+          <div class="label">Groceries</div>
+          <input class="monthlyVE" />
+          <input class="termVE" />
+          <input class="yearVE" />
+        </div>
+        <div class="row income">
+          <div class="label">Eating Out</div>
+          <input class="monthlyVE" />
+          <input class="termVE" />
+          <input class="yearVE" />
+        </div>
+        <div class="row income">
+          <div class="label">Entertainment</div>
+          <input class="monthlyVE" />
+          <input class="termVE" />
+          <input class="yearVE" />
+        </div>
+        <div class="row income">
+          <div class="label">Clothing</div>
+          <input class="monthlyVE" />
+          <input class="termVE" />
+          <input class="yearVE" />
+        </div>
+        <div class="row income">
+          <div class="label">Charitable Giving</div>
+          <input class="monthlyVE" />
+          <input class="termVE" />
+          <input class="yearVE" />
+        </div>
+        <div class="row VETotal">
+          <div class="label">Total:</div>
+          <div id="monthVETotal"></div>
+          <div id="termVETotal"></div>
+          <div id="yearVETotal"></div>
         </div>
       </div>
     </main>
