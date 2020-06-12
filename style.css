@@ -22,6 +22,7 @@ html {
 header {
   padding: 2rem;
 }
+
 header > p {
   font-weight: bold;
   cursor: pointer;
@@ -33,7 +34,7 @@ header > p:hover {
 
 h1 {
   font-family: 'Indie Flower', cursive;
-  font-size: 1.5rem;
+  font-size: 2.5rem;
 }
 #about {
   width: 75vw;
@@ -45,14 +46,24 @@ h1 {
   left: 0;
   right: 0;
   transition: 0.4s ease;
+  display: flex;
+  border-radius: 5%;
+}
+#about i {
+  margin: 15px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+#about i:hover {
+  color: blue;
 }
 .hidden {
   opacity: 0;
+  z-index: -1000;
 }
 .planner {
   width: 1024px;
   margin: auto;
-  margin-bottom: 100px;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(auto, 150px);
@@ -76,4 +87,22 @@ input {
 
 .planner div {
   border: solid 0.2px teal;
+}
+
+#totalDisplay {
+  padding: 2rem;
+  border: 2px solid red;
+  width: 350px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+#totalDisplay p {
+  width: 50%;
+}
+
+#totalDisplay > hr {
+  border: 1px solid black;
+  width: 100%;
+  margin: auto;
 }
