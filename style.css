@@ -33,8 +33,21 @@ header > p:hover {
 
 h1 {
   font-family: 'Indie Flower', cursive;
-
   font-size: 1.5rem;
+}
+#about {
+  width: 75vw;
+  height: 75vh;
+  background-color: white;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  transition: 0.4s ease;
+}
+.hidden {
+  opacity: 0;
 }
 .planner {
   width: 1024px;
@@ -61,6 +74,6 @@ input {
   border: solid 0.2px teal;
 }
 
-div {
+.planner div {
   border: solid 0.2px teal;
 }
