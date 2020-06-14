@@ -109,3 +109,25 @@ input {
   width: 100%;
   margin: auto;
 }
+
+
+
+/* testing
+*/
+
+form {
+  width: 100px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+form > label {
+  padding: 5px;
+}
+
+#cardPick
+{
+  padding: 2rem;
+  margin: auto;
+}

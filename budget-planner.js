@@ -5,12 +5,12 @@ const monthIncomeTotal = document.getElementById('monthIncomeTotal');
 const termIncomeElements = document.getElementsByClassName('termIncome');
 const termIncomeTotal = document.getElementById('termIncomeTotal');
 
-const yearlyIncomeElements = document.getElementsByClassName('yearIncome');
-const yearlyIncomeTotal = document.getElementById('yearIncomeTotal');
+const yearIncomeElements = document.getElementsByClassName('yearIncome');
+const yearIncomeTotal = document.getElementById('yearIncomeTotal');
 
 addEachListener(monthIncomeElements, monthIncomeTotal);
 addEachListener(termIncomeElements, termIncomeTotal);
-addEachListener(yearlyIncomeElements, yearlyIncomeTotal);
+addEachListener(yearIncomeElements, yearIncomeTotal);
 
 //fixed expenses section
 const monthFixedExpenseElements = document.getElementsByClassName('monthFE');
@@ -68,13 +68,57 @@ function calculateTotal(period, totalElement) {
 
 //total display
 //access elements
-let calcButtons = document.getElementsByClassName('pickCalc');
-for (let choice of calcButtons) {
-  if (choice.checked) {
-    console.log(choice.id + ' is checked');
+let calcBalanceBtn = document.getElementById('calcBalanceBtn');
+calcBalanceBtn.onclick = calcBalance;
+
+//need to get the elements for displaying balance
+//get total income
+let totalIncomeElement = document.getElementById('totalIncome');
+//get totalExpenses element
+let totalExpensesElement = document.getElementById('totalExpenses');
+//get balance element
+let balanceElement = document.getElementById('balance');
+
+function calcBalance() {
+  console.log("calculating balance...")
+  let calcButtons = document.getElementsByClassName('pickCalc');
+  let selectedChoice;
+  for (let choice of calcButtons) {
+    if (choice.checked) {
+      selectedChoice = choice.id;
+    }
   }
+  
+  let totalIncome;
+  let totalExpenses;
+  let balance;
+  switch(selectedChoice) {
+    case "calcMonth":
+      console.log('picked month');
+      totalIncome = Number(monthIncomeTotal.innerText.substring(1));
+      totalExpenses = Number(monthFixedExpenseTotal.innerText.substring(1)) + 
+        Number(monthVarExpenseTotal.innerText.substring(1));
+      break;
+    case "calcTerm":
+      console.log('picked term');
+      totalIncome = Number(termIncomeTotal.innerText.substring(1));
+      totalExpenses = Number(termFixedExpenseTotal.innerText.substring(1)) + 
+        Number(termVarExpenseTotal.innerText.substring(1));
+      break;
+    case "calcYear":
+      console.log('picked year');
+      totalIncome = Number(yearIncomeTotal.innerText.substring(1));
+      totalExpenses = Number(yearFixedExpenseTotal.innerText.substring(1)) + 
+        Number(yearVarExpenseTotal.innerText.substring(1));
+      break;
+  }
+  balance = totalIncome - totalExpenses;
+  
+  //display results
+  totalIncomeElement.innerText = '$' + totalIncome;
+  totalExpensesElement.innerText = '$' + totalExpenses;
+  balanceElement.innerText = '$' + balance;
+
+  console.log('calculated balance!');
 }
 
-let totalIncomeEl = document.getElementById('totalIncome');
-let totalExpensesEl = document.getElementById('totalExpenses');
-let totalBalanceEl = document.getElementById('balance');
