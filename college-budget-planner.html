@@ -186,51 +186,57 @@
           <div id="yearVETotal"></div>
         </div>
       </div>
-      <div id="cardPick">
-        <h3>Calculate balance for:</h3>
-        <form>
-          <label
-            ><input
-              class="pickCalc"
-              type="radio"
-              id="calcMonth"
-              name="calcChoice"
-              checked
-            />
-            Month
-          </label>
-          <label
-            ><input
-              class="pickCalc"
-              type="radio"
-              id="calcTerm"
-              name="calcChoice"
-            />
-            Term
-          </label>
-          <label
-            ><input
-              class="pickCalc"
-              type="radio"
-              id="calcYear"
-              name="calcChoice"
-            />
-            Year
-          </label>
-        </form>
-        <button id="calcBalanceBtn">Calculate balance!</button>
+      <div id="flipCard">
+        <div id="flipCardInner">
+          <div id="cardPick">
+            <h3>Calculate balance for:</h3>
+            <form>
+              <label
+                ><input
+                  class="pickCalc"
+                  type="radio"
+                  id="calcMonth"
+                  name="calcChoice"
+                  checked
+                />
+                Month
+              </label>
+              <label
+                ><input
+                  class="pickCalc"
+                  type="radio"
+                  id="calcTerm"
+                  name="calcChoice"
+                />
+                Term
+              </label>
+              <label
+                ><input
+                  class="pickCalc"
+                  type="radio"
+                  id="calcYear"
+                  name="calcChoice"
+                />
+                Year
+              </label>
+            </form>
+            <button id="calcBalanceBtn">Calculate balance!</button>
+          </div>
+          <div id="cardShow">
+            <div id="totalDisplay">
+              <div>Total income:</div>
+              <div id="totalIncome"></div>
+              <div>- Total expenses:</div>
+              <div id="totalExpenses"></div>
+              <hr />
+              <div>Balance:</div>
+              <div id="balance"></div>
+            </div>
+            <button>Recalculate</button>
+            <button>Visualize!</button>
+          </div>
+        </div>
       </div>
-      <div id="totalDisplay">
-        <div>Total income:</div>
-        <div id="totalIncome"></div>
-        <div>- Total expenses:</div>
-        <div id="totalExpenses"></div>
-        <hr />
-        <div>Balance:</div>
-        <div id="balance"></div>
-      </div>
-      <button>Recalculate</button>
-      <button>Visualize!</button>
     </main>
     <script src="budget-planner.js"></script>
     <script src="about.js"></script>
