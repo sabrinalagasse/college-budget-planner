@@ -7,7 +7,6 @@ const termIncomeTotal = document.getElementById('termIncomeTotal');
 
 const yearlyIncomeElements = document.getElementsByClassName('yearIncome');
 const yearlyIncomeTotal = document.getElementById('yearIncomeTotal');
-console.log(yearlyIncomeTotal);
 
 addEachListener(monthIncomeElements, monthIncomeTotal);
 addEachListener(termIncomeElements, termIncomeTotal);
@@ -66,3 +65,16 @@ function calculateTotal(period, totalElement) {
     totalElement.innerHTML = '$' + total;
   }
 }
+
+//total display
+//access elements
+let calcButtons = document.getElementsByClassName('pickCalc');
+for (let choice of calcButtons) {
+  if (choice.checked) {
+    console.log(choice.id + ' is checked');
+  }
+}
+
+let totalIncomeEl = document.getElementById('totalIncome');
+let totalExpensesEl = document.getElementById('totalExpenses');
+let totalBalanceEl = document.getElementById('balance');

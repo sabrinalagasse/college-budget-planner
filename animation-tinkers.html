@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script type="text/javascript">
+      window.onload = function () {
+        var chart = new CanvasJS.Chart('chartContainer', {
+          animationEnabled: true,
+          title: {
+            text: 'Fixed Expenses',
+          },
+          data: [
+            {
+              // Change type to "doughnut", "line", "splineArea", etc.
+              type: 'pie',
+              dataPoints: [
+                {label: 'Rent/Room + Board', y: 200},
+                {label: 'Auto expenses', y: 100},
+                {label: 'Tuition/fees', y: 100},
+                {label: 'Loans', y: 100},
+                {label: 'Insurance', y: 100},
+                {label: 'Other', y: 100},
+              ],
+            },
+          ],
+        });
+        chart.render();
+      };
+    </script>
+  </head>
+  <body>
+    <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+  </body>
+</html>
+<!-- 
+
+	https://canvasjs.com/javascript-charts/
+ -->
