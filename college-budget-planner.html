@@ -186,45 +186,50 @@
           <div id="yearVETotal"></div>
         </div>
       </div>
-      <form>
-        <label for="month"
-          ><input
-            class="pickCalc"
-            type="radio"
-            id="calcMonth"
-            name="calcChoice"
-            checked
-          />
-          Month
-        </label>
-        <label for="term"
-          ><input
-            class="pickCalc"
-            type="radio"
-            id="calcMonth"
-            name="calcChoice"
-          />
-          Term
-        </label>
-        <label for="year"
-          ><input
-            class="pickCalc"
-            type="radio"
-            id="calcMonth"
-            name="calcChoice"
-          />
-          Year
-        </label>
-      </form>
+      <div id="cardPick">
+        <h3>Calculate balance for:</h3>
+        <form>
+          <label
+            ><input
+              class="pickCalc"
+              type="radio"
+              id="calcMonth"
+              name="calcChoice"
+              checked
+            />
+            Month
+          </label>
+          <label
+            ><input
+              class="pickCalc"
+              type="radio"
+              id="calcTerm"
+              name="calcChoice"
+            />
+            Term
+          </label>
+          <label
+            ><input
+              class="pickCalc"
+              type="radio"
+              id="calcYear"
+              name="calcChoice"
+            />
+            Year
+          </label>
+        </form>
+        <button id="calcBalanceBtn">Calculate balance!</button>
+      </div>
       <div id="totalDisplay">
         <div>Total income:</div>
-        <div id="totalIncome">1000</div>
+        <div id="totalIncome"></div>
         <div>- Total expenses:</div>
-        <div id="totalExpenses">100</div>
+        <div id="totalExpenses"></div>
         <hr />
         <div>Balance:</div>
-        <div id="balance">900</div>
+        <div id="balance"></div>
       </div>
+      <button>Recalculate</button>
       <button>Visualize!</button>
     </main>
     <script src="budget-planner.js"></script>
