@@ -41,31 +41,6 @@ h1 {
   font-family: 'Indie Flower', cursive;
   font-size: 2.5rem;
 }
-#about {
-  width: 75vw;
-  height: 75vh;
-  background-color: white;
-  position: absolute;
-  margin-left: auto;
-  margin-right: auto;
-  left: 0;
-  right: 0;
-  transition: 0.4s ease;
-  display: flex;
-  border-radius: 5%;
-}
-#about i {
-  margin: 15px;
-  cursor: pointer;
-  transition: 0.2s ease;
-}
-#about i:hover {
-  color: blue;
-}
-.hidden {
-  opacity: 0;
-  z-index: -1000;
-}
 .planner {
   width: 1024px;
   margin: auto;
@@ -92,6 +67,7 @@ h1 {
 input {
   background-color: transparent;
   border: none;
+  text-align: center;
 }
 
 .planner div,

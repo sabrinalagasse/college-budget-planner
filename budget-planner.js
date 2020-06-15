@@ -1,4 +1,7 @@
-//income section
+/*
+ * Income Section
+ */
+//access elements
 const monthIncomeElements = document.getElementsByClassName('monthlyIncome');
 const monthIncomeTotal = document.getElementById('monthIncomeTotal');
 
@@ -8,11 +11,15 @@ const termIncomeTotal = document.getElementById('termIncomeTotal');
 const yearIncomeElements = document.getElementsByClassName('yearIncome');
 const yearIncomeTotal = document.getElementById('yearIncomeTotal');
 
+//add event listener for each time period
 addEachListener(monthIncomeElements, monthIncomeTotal);
 addEachListener(termIncomeElements, termIncomeTotal);
 addEachListener(yearIncomeElements, yearIncomeTotal);
 
-//fixed expenses section
+/*
+ * Fixed Expenses Section
+ */
+//access elements
 const monthFixedExpenseElements = document.getElementsByClassName('monthFE');
 const monthFixedExpenseTotal = document.getElementById('monthFETotal');
 
@@ -22,11 +29,15 @@ const termFixedExpenseTotal = document.getElementById('termFETotal');
 const yearFixedExpenseElements = document.getElementsByClassName('yearFE');
 const yearFixedExpenseTotal = document.getElementById('yearFETotal');
 
+//add event listeners for each time period
 addEachListener(monthFixedExpenseElements, monthFixedExpenseTotal);
 addEachListener(termFixedExpenseElements, termFixedExpenseTotal);
 addEachListener(yearFixedExpenseElements, yearFixedExpenseTotal);
 
-//variable expenses section
+/*
+ * Fixed Expenses Section
+ */
+//access elements
 const monthVarExpenseElements = document.getElementsByClassName('monthlyVE');
 const monthVarExpenseTotal = document.getElementById('monthVETotal');
 
@@ -36,13 +47,22 @@ const termVarExpenseTotal = document.getElementById('termVETotal');
 const yearVarExpenseElements = document.getElementsByClassName('yearVE');
 const yearVarExpenseTotal = document.getElementById('yearVETotal');
 
+//add event listeners for each time period
 addEachListener(monthVarExpenseElements, monthVarExpenseTotal);
 addEachListener(termVarExpenseElements, termVarExpenseTotal);
 addEachListener(yearVarExpenseElements, yearVarExpenseTotal);
 
+/*
+* This function will has two parameters:
+  period: list of each element within that time period
+  totalElement: the element for the total of that time period
+
+*/
 function addEachListener(period, totalElement) {
-  for (let income of period) {
-    income.addEventListener('change', function () {
+  //for each element in the period list
+  for (let element of period) {
+    //when that element changes, calculate the total
+    element.addEventListener('change', function () {
       calculateTotal(period, totalElement);
     });
   }
@@ -51,14 +71,15 @@ function addEachListener(period, totalElement) {
 function calculateTotal(period, totalElement) {
   let total = 0;
   let valid = true;
-  for (let income of period) {
-    let incomeValue = Number(income.value);
-    if (isNaN(incomeValue)) {
-      income.value = '';
-      income.placeholder = 'Please enter a number';
+  //for each item in period list
+  for (let element of period) {
+    let elementValue = Number(element.value);
+    if (isNaN(elementValue)) {
+      element.value = '';
+      element.placeholder = 'Please enter a number';
       valid = false;
     } else {
-      total += incomeValue;
+      total += elementValue;
     }
   }
   if (valid) {
@@ -82,20 +103,22 @@ let balanceElement = document.getElementById('balance');
 let card = document.getElementById('flipCard');
 //get flip card header
 let cardHeader = document.querySelector('#totalDisplay > h3');
+//get error message
+let errorMsg = document.getElementById('calcError');
 //get the recalculate button
 let recalcButton = document.getElementById('recalcButton');
 //when recalcButton is clicked, flip card again
 recalcButton.onclick = flip;
 
-//variables declared outside of function
-//for visualize() validation
-let totalIncome;
-let totalExpenses;
 function calcBalance() {
   let calcButtons = document.getElementsByClassName('pickCalc');
-  let selectedChoice;
+  let selectedChoice; //radio button choice
+  let selectedPeriod; //variable for display output
+
+  //variables for calculation
   let balance;
-  let selectedPeriod;
+  let totalIncome;
+  let totalExpenses;
   for (let choice of calcButtons) {
     if (choice.checked) {
       selectedChoice = choice.id;
@@ -128,15 +151,18 @@ function calcBalance() {
   //calculate balance
   balance = totalIncome - totalExpenses;
 
+  if (totalIncome == 0 || totalExpenses == 0) {
+    errorMsg.classList.remove('hide');
+    return;
+  }
   //display results
   cardHeader.innerText = selectedPeriod + ' Balance';
   totalIncomeElement.innerText = '$' + totalIncome;
   totalExpensesElement.innerText = '$' + totalExpenses;
   balanceElement.innerText = '$' + balance;
 
-  //hide visualize error message
-  visError.classList.add('hide');
-
+  //hide error message
+  errorMsg.classList.add('hide');
   flip(); //flip card
 }
 
