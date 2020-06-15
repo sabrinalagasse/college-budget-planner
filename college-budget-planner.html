@@ -9,6 +9,8 @@
       src="https://kit.fontawesome.com/5afdfdec85.js"
       crossorigin="anonymous"
     ></script>
+
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
   </head>
   <body>
     <main>
@@ -18,14 +20,9 @@
           Starting higher education sometimes means the start of financial
           management. Use this tool to help!
         </h2>
-        <p id="openAbout">How do I work?</p>
-
-        <div id="about" class="hidden">
-          <i class="far fa-times-circle fa-2x"></i>
-        </div>
       </header>
       <div class="planner">
-        <div class="row" id="periodLabels">
+        <div class="row">
           <div class="label">Income</div>
           <div class="label">Monthly</div>
           <div class="label">Quarter/Semester</div>
@@ -63,7 +60,7 @@
           <div id="yearIncomeTotal"></div>
         </div>
         <!--fixed expenses-->
-        <div class="row" id="periodLabels">
+        <div class="row">
           <div class="label">Expenses (fixed)</div>
           <div class="label">Monthly</div>
           <div class="label">Quarter/Semester</div>
@@ -113,7 +110,7 @@
         </div>
 
         <!--Variable expenses-->
-        <div class="row" id="periodLabels">
+        <div class="row">
           <div class="label">Expenses (variable)</div>
           <div class="label">Monthly</div>
           <div class="label">Quarter/Semester</div>
@@ -186,53 +183,65 @@
           <div id="yearVETotal"></div>
         </div>
       </div>
-      <div id="cardPick">
-        <h3>Calculate balance for:</h3>
-        <form>
-          <label
-            ><input
-              class="pickCalc"
-              type="radio"
-              id="calcMonth"
-              name="calcChoice"
-              checked
-            />
-            Month
-          </label>
-          <label
-            ><input
-              class="pickCalc"
-              type="radio"
-              id="calcTerm"
-              name="calcChoice"
-            />
-            Term
-          </label>
-          <label
-            ><input
-              class="pickCalc"
-              type="radio"
-              id="calcYear"
-              name="calcChoice"
-            />
-            Year
-          </label>
-        </form>
-        <button id="calcBalanceBtn">Calculate balance!</button>
+      <!--total balance flip card -->
+      <div id="flipCardContainer">
+        <div id="flipCard">
+          <div class="front face">
+            <h3>Calculate balance for:</h3>
+            <form>
+              <label
+                ><input
+                  class="pickCalc"
+                  type="radio"
+                  id="calcMonth"
+                  name="calcChoice"
+                  checked
+                />
+                Month
+              </label>
+              <label
+                ><input
+                  class="pickCalc"
+                  type="radio"
+                  id="calcTerm"
+                  name="calcChoice"
+                />
+                Term
+              </label>
+              <label
+                ><input
+                  class="pickCalc"
+                  type="radio"
+                  id="calcYear"
+                  name="calcChoice"
+                />
+                Year
+              </label>
+            </form>
+            <button id="calcBalanceBtn">Calculate balance!</button>
+            <div id="calcError" class="hide">
+              Error: need data to calculate!
+            </div>
+          </div>
+          <div class="back face">
+            <div id="totalDisplay">
+              <h3>
+                Balance
+              </h3>
+              <div>Total income:</div>
+              <div id="totalIncome"></div>
+              <div>- Total expenses:</div>
+              <div id="totalExpenses"></div>
+              <hr />
+              <div>Balance:</div>
+              <div id="balance"></div>
+            </div>
+            <button id="recalcButton">Recalculate</button>
+          </div>
+        </div>
       </div>
-      <div id="totalDisplay">
-        <div>Total income:</div>
-        <div id="totalIncome"></div>
-        <div>- Total expenses:</div>
-        <div id="totalExpenses"></div>
-        <hr />
-        <div>Balance:</div>
-        <div id="balance"></div>
-      </div>
-      <button>Recalculate</button>
-      <button>Visualize!</button>
+      <canvas id="chartContainer" class="hide"></canvas>
     </main>
     <script src="budget-planner.js"></script>
-    <script src="about.js"></script>
   </body>
 </html>
