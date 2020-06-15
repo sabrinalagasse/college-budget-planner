@@ -9,6 +9,8 @@
       src="https://kit.fontawesome.com/5afdfdec85.js"
       crossorigin="anonymous"
     ></script>
+
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
   </head>
   <body>
     <main>
@@ -19,13 +21,9 @@
           management. Use this tool to help!
         </h2>
         <p id="openAbout">How do I work?</p>
-
-        <div id="about" class="hidden">
-          <i class="far fa-times-circle fa-2x"></i>
-        </div>
       </header>
       <div class="planner">
-        <div class="row" id="periodLabels">
+        <div class="row">
           <div class="label">Income</div>
           <div class="label">Monthly</div>
           <div class="label">Quarter/Semester</div>
@@ -63,7 +61,7 @@
           <div id="yearIncomeTotal"></div>
         </div>
         <!--fixed expenses-->
-        <div class="row" id="periodLabels">
+        <div class="row">
           <div class="label">Expenses (fixed)</div>
           <div class="label">Monthly</div>
           <div class="label">Quarter/Semester</div>
@@ -113,7 +111,7 @@
         </div>
 
         <!--Variable expenses-->
-        <div class="row" id="periodLabels">
+        <div class="row">
           <div class="label">Expenses (variable)</div>
           <div class="label">Monthly</div>
           <div class="label">Quarter/Semester</div>
@@ -186,9 +184,10 @@
           <div id="yearVETotal"></div>
         </div>
       </div>
-      <div id="flipCard">
-        <div id="flipCardInner">
-          <div id="cardPick">
+      <!--total balance flip card flip card -->
+      <div id="flipCardContainer">
+        <div id="flipCard">
+          <div class="front face">
             <h3>Calculate balance for:</h3>
             <form>
               <label
@@ -222,8 +221,11 @@
             </form>
             <button id="calcBalanceBtn">Calculate balance!</button>
           </div>
-          <div id="cardShow">
+          <div class="back face">
             <div id="totalDisplay">
+              <h3>
+                Balance
+              </h3>
               <div>Total income:</div>
               <div id="totalIncome"></div>
               <div>- Total expenses:</div>
@@ -232,13 +234,57 @@
               <div>Balance:</div>
               <div id="balance"></div>
             </div>
-            <button>Recalculate</button>
-            <button>Visualize!</button>
+            <button id="recalcButton">Recalculate</button>
+            <button id="visualizeBtn">Visualize!</button>
+            <div id="visError" class="hide">
+              Error: need data to visualize!
+            </div>
           </div>
         </div>
       </div>
+      <canvas id="chartContainer" class="hide"></canvas>
     </main>
     <script src="budget-planner.js"></script>
-    <script src="about.js"></script>
+    <!-- Chart.js visualization -->
+    <script>
+      //get visualize button
+      let visButton = document.getElementById('visualizeBtn');
+      //get error message
+      let visError = document.getElementById('visError');
+      visButton.onclick = visualize;
+      function visualize() {
+        let chartContainer = document.getElementById('chartContainer');
+        let totalIncome = document.getElementById('totalIncome').innerText;
+        let totalExpenses = document.getElementById('totalExpenses').innerText;
+        if (totalIncome == '$0' || totalExpenses == '$0') {
+          //show error message
+          visError.classList.remove('hide');
+          return;
+        }
+        //show chartContainer
+        chartContainer.classList.remove('hide');
+        let chart = new CanvasJS.Chart(chartContainer, {
+          animationEnabled: true,
+          title: {
+            text: 'Fixed Expenses',
+          },
+          data: [
+            {
+              // Change type to "doughnut", "line", "splineArea", etc.
+              type: 'pie',
+              dataPoints: [
+                {label: 'Rent/Room + Board', y: 200},
+                {label: 'Auto expenses', y: 100},
+                {label: 'Tuition/fees', y: 100},
+                {label: 'Loans', y: 100},
+                {label: 'Insurance', y: 100},
+                {label: 'Other', y: 100},
+              ],
+            },
+          ],
+        });
+        chart.render();
+      }
+    </script>
   </body>
 </html>

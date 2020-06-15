@@ -78,47 +78,72 @@ let totalIncomeElement = document.getElementById('totalIncome');
 let totalExpensesElement = document.getElementById('totalExpenses');
 //get balance element
 let balanceElement = document.getElementById('balance');
+//get the flip card
+let card = document.getElementById('flipCard');
+//get flip card header
+let cardHeader = document.querySelector('#totalDisplay > h3');
+//get the recalculate button
+let recalcButton = document.getElementById('recalcButton');
+//when recalcButton is clicked, flip card again
+recalcButton.onclick = flip;
 
+//variables declared outside of function
+//for visualize() validation
+let totalIncome;
+let totalExpenses;
 function calcBalance() {
-  console.log("calculating balance...")
   let calcButtons = document.getElementsByClassName('pickCalc');
   let selectedChoice;
+  let balance;
+  let selectedPeriod;
   for (let choice of calcButtons) {
     if (choice.checked) {
       selectedChoice = choice.id;
     }
   }
-  
-  let totalIncome;
-  let totalExpenses;
-  let balance;
-  switch(selectedChoice) {
-    case "calcMonth":
-      console.log('picked month');
+
+  switch (selectedChoice) {
+    case 'calcMonth':
+      selectedPeriod = 'Monthly';
       totalIncome = Number(monthIncomeTotal.innerText.substring(1));
-      totalExpenses = Number(monthFixedExpenseTotal.innerText.substring(1)) + 
+      totalExpenses =
+        Number(monthFixedExpenseTotal.innerText.substring(1)) +
         Number(monthVarExpenseTotal.innerText.substring(1));
       break;
-    case "calcTerm":
-      console.log('picked term');
+    case 'calcTerm':
+      selectedPeriod = 'Term';
       totalIncome = Number(termIncomeTotal.innerText.substring(1));
-      totalExpenses = Number(termFixedExpenseTotal.innerText.substring(1)) + 
+      totalExpenses =
+        Number(termFixedExpenseTotal.innerText.substring(1)) +
         Number(termVarExpenseTotal.innerText.substring(1));
       break;
-    case "calcYear":
-      console.log('picked year');
+    case 'calcYear':
+      selectedPeriod = 'Yearly';
       totalIncome = Number(yearIncomeTotal.innerText.substring(1));
-      totalExpenses = Number(yearFixedExpenseTotal.innerText.substring(1)) + 
+      totalExpenses =
+        Number(yearFixedExpenseTotal.innerText.substring(1)) +
         Number(yearVarExpenseTotal.innerText.substring(1));
       break;
   }
+  //calculate balance
   balance = totalIncome - totalExpenses;
-  
+
   //display results
+  cardHeader.innerText = selectedPeriod + ' Balance';
   totalIncomeElement.innerText = '$' + totalIncome;
   totalExpensesElement.innerText = '$' + totalExpenses;
   balanceElement.innerText = '$' + balance;
 
-  console.log('calculated balance!');
+  //hide visualize error message
+  visError.classList.add('hide');
+
+  flip(); //flip card
 }
 
+/*
+ * This function flips the card.
+ */
+function flip() {
+  //toggle the flip class
+  card.classList.toggle('flip');
+}

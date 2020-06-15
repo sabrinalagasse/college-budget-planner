@@ -2,9 +2,15 @@
 <html>
   <head>
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+  </head>
+  <body>
+    <div id="chartContainer"></div>
+    <button id="btn">click me</button>
     <script type="text/javascript">
-      window.onload = function () {
-        var chart = new CanvasJS.Chart('chartContainer', {
+      let btn = document.getElementById('btn');
+      btn.onclick = drawChart;
+      function drawChart() {
+        let chart = new CanvasJS.Chart('chartContainer', {
           animationEnabled: true,
           title: {
             text: 'Fixed Expenses',
@@ -25,11 +31,8 @@
           ],
         });
         chart.render();
-      };
+      }
     </script>
-  </head>
-  <body>
-    <div id="chartContainer" style="height: 300px; width: 100%;"></div>
   </body>
 </html>
 <!-- 

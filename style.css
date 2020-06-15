@@ -11,12 +11,17 @@ html {
   font-size: 16px;
   text-align: center;
   font-family: Raleway, sans-serif;
+  /*
+  * background gradient generated:
+  * https://cssgradient.io/gradient-backgrounds/
+  */
   background-image: linear-gradient(
-    45deg,
-    #ff9a9e 0%,
-    #fad0c4 99%,
-    #fad0c4 100%
+    109.6deg,
+    rgba(102, 203, 149, 1) 11.2%,
+    rgba(39, 210, 175, 1) 98.7%
   );
+  font-weight: bold;
+  position: relative;
 }
 
 header {
@@ -74,6 +79,10 @@ h1 {
   grid-template-columns: repeat(4, 1fr);
 }
 
+.label {
+  background-color: teal;
+}
+
 .row > div {
   height: 50px;
   display: flex;
@@ -91,23 +100,25 @@ input {
 }
 
 #totalDisplay {
-  padding: 2rem;
-  font-size: 1.5rem;
-  width: 450px;
+  font-size: 1.7rem;
   margin: auto;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-}
-#totalDisplay div {
-  width: 50%;
-  text-align: right;
+  justify-content: space-between;
 }
 
 #totalDisplay > hr {
   border: 1px solid black;
   width: 100%;
   margin: auto;
+}
+#totalDisplay h3 {
+  width: 100%;
+}
+#totalIncome,
+#totalExpenses,
+#balance {
+  text-align: right;
 }
 
 form {
@@ -126,13 +137,19 @@ form > label {
   position: relative;
   z-index: 1;
   perspective: 1000;
+  margin: 1rem;
 }
 
 #flipCard {
   width: 100%;
   height: 100%;
   transform-style: preserve-3d;
-  transition: all 1s linear;
+  transition: all 0.5s linear;
+  margin: 1rem;
+  background-color: teal;
+  width: 400px;
+  height: 240px;
+  margin: auto;
 }
 
 .flip {
@@ -144,10 +161,35 @@ form > label {
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
+  /*
+  * Generated on https://www.cssmatic.com/box-shadow
+  */
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
 }
 
 .face.back {
   display: block;
   transform: rotateY(180deg);
   box-sizing: border-box;
+}
+
+#visError {
+  text-decoration: underline;
+}
+.hide {
+  display: none;
+}
+
+#chartContainer {
+  height: 370px;
+  max-width: 920px;
+  margin: 0px auto;
+  z-index: 100000;
 }

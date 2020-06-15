@@ -9,3 +9,5 @@ aboutBtn.onclick = toggleAbout;
 function toggleAbout() {
   aboutElement.classList.toggle('hidden');
 }
+
+//access visualize button
